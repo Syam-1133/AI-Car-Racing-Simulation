@@ -1,6 +1,7 @@
+
 # AI Car Racing Simulation
 
-This project is an interactive AI car racing simulation built with Python and Pyglet. It demonstrates how neural networks and genetic algorithms can be used to evolve self-driving cars that learn to navigate a racetrack.
+An AI-powered car racing simulation built with **Python** and **Pyglet**. This project demonstrates how simple neural networks and genetic algorithms can evolve self-driving cars to navigate a racetrack—using only pure Python and the built-in `math` module (no numpy, pytorch, tensorflow, or other ML libraries).
 
 ---
 
@@ -8,7 +9,9 @@ This project is an interactive AI car racing simulation built with Python and Py
 
 - **AI Cars**: Each car is controlled by a neural network ("brain") that receives input from virtual sensors (radars) and outputs steering and acceleration commands.
 - **Genetic Algorithm**: The best-performing cars are selected, crossed over, and mutated to create new generations that improve over time.
+- **Progressive Learning**: Cars evolve from random driving to skilled track navigation.
 - **Visualization**: The simulation is visualized using Pyglet, showing the racetrack, cars, checkpoints, and neural network activity.
+- **Replay System**: Best-performing models can be saved and replayed later.
 
 ---
 
@@ -21,6 +24,9 @@ This project is an interactive AI car racing simulation built with Python and Py
 5. **Learning**: Over many generations, cars learn to drive better and reach more checkpoints.
 
 ---
+
+
+
 
 ## 📂 Project Structure
 
@@ -46,9 +52,6 @@ This project is an interactive AI car racing simulation built with Python and Py
 - Python 3.10+
 - [Pyglet](https://pyglet.readthedocs.io/en/latest/) (`pip install pyglet`)
 
-**No external machine learning libraries are used!**
-
-This project is implemented using only pure Python and the built-in `math` module. There is no use of numpy, pytorch, tensorflow, or any other ML/AI libraries. All neural network and genetic algorithm logic is written from scratch 
 
 ### Running the Simulation
 
@@ -101,11 +104,37 @@ Loads the best saved networks and lets you watch them drive (no evolution).
 
 ---
 
-## 📚 Example
 
-- Cars start with random behavior and quickly crash.
-- Over generations, some cars learn to follow the track and reach more checkpoints.
-- The best-performing neural networks are saved and can be replayed.
+
+## Detailed Project Explanation
+
+This project is a self-driving car simulation and evolution environment, built entirely in Python using the Pyglet library for graphics. The goal is to evolve cars that can drive themselves around a racetrack using only simple neural networks and a genetic algorithm. Everything is implemented from scratch using pure Python and the built-in `math` module—no numpy, pytorch, tensorflow, or other machine learning libraries.
+
+### How the Simulation Works
+
+1. **Environment & Visualization**: The racetrack is loaded from images and JSON files. Cars are visualized as sprites and move around the track. Each car is equipped with 5 virtual radars (sensors) that measure the distance to the track edge in different directions.
+
+2. **Neural Network Brains**: Each car has a small feedforward neural network (see `network.py`). The network takes the 5 radar distances as input and outputs two values: acceleration and steering. The network is implemented from scratch, with all math done manually.
+
+3. **Genetic Algorithm**: At the start, all cars have random neural network weights. After each simulation round, cars are ranked by how many checkpoints they passed and how far they stayed from the track edge. The best-performing cars are selected. New generations are created by crossing over and mutating the weights of the best cars. Over many generations, the population of cars gets better at driving.
+
+4. **Heads-Up Display (HUD)**: The simulation is rendered in real time using Pyglet. You can see the cars, the track, checkpoints, and a HUD showing stats and neural network activity.
+
+
+
+## Demo Screenshot
+
+Below is a screenshot of the simulation in action:
+
+![AI Car Simulation Screenshot](images/Screenshot%202025-09-16%20at%209.24.48%E2%80%AFPM.png)
+
+---
+
+## 📚 Example Workflow
+
+1. Cars start with random behavior and quickly crash.
+2. Over generations, some cars learn to follow the track and reach more checkpoints.
+3. The best-performing neural networks are saved and can be replayed.
 
 ---
 
@@ -115,62 +144,7 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 
 ---
 
-## 📄 License
 
-MIT License
 
----
-
-Feel free to add screenshots, GIFs, or further instructions as needed!# 🚗 AI Car Racing Simulation  
-
-An **AI-powered car racing simulation** built with **Python** and **Pyglet**.  
-This project demonstrates how **neural networks** and **genetic algorithms** can work together to evolve self-driving cars that learn to navigate a racetrack over time.  
-
----
-
-## 📖 Table of Contents  
-1. [Features](#-features)  
-2. [How It Works](#-how-it-works)  
-3. [Project Structure](#-project-structure)  
-4. [Getting Started](#-getting-started)  
-   - [Prerequisites](#-prerequisites)  
-   - [Installation](#-installation)  
-   - [Running the Simulation](#-running-the-simulation)  
-   - [Controls](#-controls)  
-5. [Screenshots / Demo](#-screenshots--demo)  
-6. [Code Highlights](#-code-highlights)  
-7. [Example Workflow](#-example-workflow)  
-8. [Future Improvements](#-future-improvements)  
-9. [Contributing](#-contributing)  
-10. [License](#-license)  
-
----
-
-## 🌟 Features  
-- **AI Cars**: Each car is controlled by a lightweight **feedforward neural network** ("brain").  
-- **Virtual Sensors**: Cars use **5 radars** to sense distances to the track edges.  
-- **Genetic Algorithm**:  
-  - Selection → Best cars are chosen.  
-  - Crossover → Neural networks are combined.  
-  - Mutation → Random tweaks are introduced.  
-- **Progressive Learning**: Cars evolve from random driving to skilled track navigation.  
-- **Visualization**: Real-time rendering of cars, track, checkpoints, and neural activity.  
-- **Replay System**: Best-performing models can be saved and replayed later.  
-
----
-
-## 🧠 How It Works  
-1. **Initialization**: Cars begin with randomly generated neural networks.  
-2. **Sensing**: Each car has **5 radars** that measure distances to nearby walls.  
-3. **Decision Making**:  
-   - Inputs (radar distances) → Neural Network → Outputs (steering & acceleration).  
-4. **Fitness Evaluation**: Cars earn a score based on distance traveled and checkpoints crossed.  
-5. **Evolution Process**:  
-   - The top cars are kept.  
-   - Crossover and mutation create new offspring.  
-   - Weak performers are replaced.  
-6. **Learning**: Over generations, cars gradually learn how to follow the track.  
-
----
 
 
